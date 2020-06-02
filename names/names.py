@@ -22,7 +22,7 @@ duplicates = []  # Return the list of duplicates in this data structure
 bst = BSTNode("")
 
 for name_1 in names_1:
-    bst.insert(names_1)
+    bst.insert(name_1)
 
 for name_2 in names_2:
     if bst.contains(name_2):

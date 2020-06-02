@@ -5,23 +5,24 @@ class BSTNode:
         self.right = None
     
     def insert(self, value):
-        if value < self.value:
-            if not self.left:
+        if value >= self.value:
+            if self.right is None:
+                self.right = BSTNode(value)
+            else:
+                self.right.insert(value)
+        else:
+            if self.left is None:
                 self.left = BSTNode(value)
             else:
                 self.left.insert(value)
-        else:
-            self.right.insert(value)
 
     def contains(self, target):
-        if target == self.value:
-            return True
-        if target < self.left:
-            if not self.left:
+        node = self
+        while node.value != target:
+            if node.value < target:
+                node = node.right
+            else: 
+                node = node.left
+            if node is None:
                 return False
-            return self.left.contains(target)
-        else: 
-            if not self.right:
-                return False
-            return self.right.contains(target)
-
+        return True
